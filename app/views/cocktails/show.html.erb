@@ -1,0 +1,24 @@
+<body>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1490191943407-e44bafe496ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);">
+    <h1 class="text-left">YOUR MAGIC POTION</h1>
+  </div>
+  <div class="container">
+      <div class="card-product">
+        <img src="https://images.unsplash.com/photo-1563903370181-48241c5c8e21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1727&q=80" />
+        <div class="card-product-infos">
+            <h2><%= @cocktail.name %></h2>
+            <% @cocktail.doses.each do |dose| %>
+            <p><%= dose.ingredient.name %> - <%= dose.description %></p>
+        </div>
+      </div>
+          <div class="d-flex justify-content-between">
+            <span><%= link_to "Add a dose", new_cocktail_dose_path(@cocktail), class:"btn btn-ghost"%></span>
+            <%= link_to "❌", dose_path(dose),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+            <% end %>
+            <span><%= link_to "Go to the list", cocktails_path, class:"btn btn-ghost" %></span>
+          </div>
+  </div>
+
+</body>
